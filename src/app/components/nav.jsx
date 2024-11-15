@@ -17,10 +17,10 @@ export default function Nav() {
 
           {/* Links for Desktop */}
           <div className="hidden md:flex space-x-6 items-center">
-            <Link className="text-gray-600 hover:text-gray-800" href="#home">
+            <Link className="text-gray-600 hover:text-gray-800" href="/">
               Home
             </Link>
-            <Link href="#Crew" className="text-gray-600 hover:text-gray-800">
+            <Link href="/crew" className="text-gray-600 hover:text-gray-800">
               Crew
             </Link>
 

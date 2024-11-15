@@ -24,7 +24,7 @@ export default function Left() {
         <p className='text-center'>Lets Enter your Address to Start the services from God Crew</p>
         <input
           type="text"
-          placeholder="Enter your mobile number"
+          placeholder="Enter your Address to Start the services from GodCrew"
           value={mobileNumber}
           onChange={handleInputChange}
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"

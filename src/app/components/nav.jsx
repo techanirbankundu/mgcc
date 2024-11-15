@@ -12,7 +12,7 @@ export default function Nav() {
         {/* Left-aligned Links */}
         <div className="flex items-center space-x-6">
           <Link className="text-gray-800 font-bold text-xl" href="/">
-          GodCrew
+          God Crew
           </Link>
 
           {/* Links for Desktop */}

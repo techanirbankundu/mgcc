@@ -14,7 +14,7 @@ export default function Left() {
       setLoading(true);
 
       try {
-        const response = await fetch(`/api?input=${value}`);
+        const response = await fetch(`/api/places?input=${value}`);
         const data = await response.json();
 
         if (data.status === 'OK') {

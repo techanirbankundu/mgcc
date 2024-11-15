@@ -14,11 +14,9 @@ export default function Left() {
       setLoading(true);
 
       try {
-        const response = await fetch(
-          `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${value}&types=geocode&key=AIzaSyD6qMG_8aq8-B9DoPHSKWFt22creH9MM8Y`
-        );
-
+        const response = await fetch(`/api?input=${value}`);
         const data = await response.json();
+
         if (data.status === 'OK') {
           setSuggestions(data.predictions);
         } else {
@@ -47,7 +45,7 @@ export default function Left() {
       {/* Input and Suggestions */}
       <div className="flex flex-col items-center space-y-4 w-full max-w-sm">
         <p className="text-center">
-          Let's enter your address to start the services from God Crew
+          Enter the service address to get Started
         </p>
         <input
           type="text"

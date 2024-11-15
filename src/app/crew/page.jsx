@@ -1,10 +1,13 @@
+import BodySection from "../components/BodySection";
 import Nav from "../components/nav";
+import WorkerSection from "../components/WorkerSection";
 
 export default function App(){
     return (
         <div>
             <Nav/>
-            <h1 className="py-24">Welcome to crew Page</h1>
+            <BodySection/>
+            <WorkerSection/>
         </div>
     )
 }

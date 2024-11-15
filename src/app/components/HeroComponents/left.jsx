@@ -11,6 +11,7 @@ export default function Left() {
 
   const handleGetStarted = () => {
     alert(`Mobile number entered: ${mobileNumber}`);
+    location.replace(`https://godcrew.com/phoneLogin?location=${mobileNumber}`);
     // Add any further actions here, e.g., form submission or API call
   };
 

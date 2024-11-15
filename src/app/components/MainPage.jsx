@@ -8,8 +8,7 @@ export default function(){
         <>
         <Nav/>
         <HeroTopComponent/>
-        <BodySection/>
-        <WorkerSection/>
+        
         </>
     )
 }

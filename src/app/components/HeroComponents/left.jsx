@@ -1,28 +1,54 @@
-'use client'
-import { useState } from 'react';
-
+'use client';
+import { useState, useEffect } from 'react';
 
 export default function Left() {
   const [mobileNumber, setMobileNumber] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    setMobileNumber(e.target.value);
+  const handleInputChange = async (e) => {
+    const value = e.target.value;
+    setMobileNumber(value);
+
+    if (value.length > 2) { // Only search for inputs with 3+ characters
+      setLoading(true);
+
+      try {
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${value}&types=geocode&key=AIzaSyD6qMG_8aq8-B9DoPHSKWFt22creH9MM8Y`
+        );
+
+        const data = await response.json();
+        if (data.status === 'OK') {
+          setSuggestions(data.predictions);
+        } else {
+          setSuggestions([]);
+        }
+      } catch (error) {
+        console.error('Error fetching suggestions:', error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setSuggestions([]);
+    }
   };
 
   const handleGetStarted = () => {
-    alert(`Mobile number entered: ${mobileNumber}`);
+    alert(`Address entered: ${mobileNumber}`);
     location.replace(`https://godcrew.com/phoneLogin?location=${mobileNumber}`);
-    // Add any further actions here, e.g., form submission or API call
   };
 
   return (
-    <div className="flex  flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       {/* Large Text */}
       <h1 className="text-8xl font-bold mb-8 text-gray-800 text-center">God Crew</h1>
 
-      {/* Input and Button */}
+      {/* Input and Suggestions */}
       <div className="flex flex-col items-center space-y-4 w-full max-w-sm">
-        <p className='text-center'>Lets Enter your Address to Start the services from God Crew</p>
+        <p className="text-center">
+          Let's enter your address to start the services from God Crew
+        </p>
         <input
           type="text"
           placeholder="Enter your Address to Start the services from GodCrew"
@@ -30,6 +56,21 @@ export default function Left() {
           onChange={handleInputChange}
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
         />
+        {/* Suggestions Dropdown */}
+        {loading && <p>Loading suggestions...</p>}
+        {suggestions.length > 0 && (
+          <ul className="w-full border border-gray-300 rounded bg-white max-h-40 overflow-auto">
+            {suggestions.map((suggestion) => (
+              <li
+                key={suggestion.place_id}
+                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                onClick={() => setMobileNumber(suggestion.description)}
+              >
+                {suggestion.description}
+              </li>
+            ))}
+          </ul>
+        )}
         <button
           onClick={handleGetStarted}
           className="w-full bg-black text-white px-4 py-2 rounded hover:bg-gray-800 focus:outline-none"

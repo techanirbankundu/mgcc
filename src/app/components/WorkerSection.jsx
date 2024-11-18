@@ -4,8 +4,8 @@ import CrewSmileImage from '../../../public/crew/worker-smiling.webp';
 
 export default function WorkerSection() {
     return (
-        <div className="w-full py-16 min-h-screen flex items-center justify-center bg-gray-50">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 p-10">
+        <div className="w-full py-16 min-h-screen flex items-center justify-center bg-gray-50 animation-wraper-container">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 p-10 animation-wraper-container ">
                 
                 {/* Left Text Section */}
                 <div className="flex flex-col justify-center">

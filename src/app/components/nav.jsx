@@ -47,7 +47,7 @@ export default function Nav() {
               )}
             </div>
 
-            <Link className="text-gray-600 hover:text-gray-800" href="#contact">
+            <Link className="text-gray-600 hover:text-gray-800" href="/contact">
               Contact
             </Link>
           </div>
@@ -92,10 +92,10 @@ export default function Nav() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden mt-4 space-y-2 px-4">
-          <Link className="block text-gray-600 hover:text-gray-800" href="#home">
+          <Link className="block text-gray-600 hover:text-gray-800" href="/">
             Home
           </Link>
-          <Link className="block text-gray-600 hover:text-gray-800" href="#Crew">
+          <Link className="block text-gray-600 hover:text-gray-800" href="/crew">
             Crew
           </Link>
 
@@ -112,7 +112,7 @@ export default function Nav() {
             </div>
           </div>
 
-          <Link className="block text-gray-600 hover:text-gray-800" href="#contact">
+          <Link className="block text-gray-600 hover:text-gray-800" href="/contact">
             Contact
           </Link>
           

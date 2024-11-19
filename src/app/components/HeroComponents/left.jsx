@@ -2,14 +2,14 @@
 import { useState } from 'react';
 
 export default function Left() {
-  const [mobileNumber, setMobileNumber] = useState('');
+  const [userAddress, setUserAddress] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleInputChange = async (e) => {
     const value = e.target.value;
-    setMobileNumber(value);
+    setUserAddress(value);
 
     if (value.length > 2) {
       setLoading(true);
@@ -37,14 +37,14 @@ export default function Left() {
   };
 
   const handleSuggestionClick = (description) => {
-    setMobileNumber(description); // Update input field with the selected description
+    setUserAddress(description); // Update input field with the selected description
     setSuggestions([]); // Clear suggestions
     setShowDropdown(false); // Hide the dropdown
   };
 
   const handleGetStarted = () => {
-    alert(`Address entered: ${mobileNumber}`);
-    location.replace(`https://godcrew.com/phoneLogin?location=${mobileNumber}`);
+    alert(`Address entered: ${userAddress}`);
+    location.replace(`https://app.godcrew.com/phoneLogin?location=${userAddress}`);
   };
 
   return (
@@ -60,7 +60,7 @@ export default function Left() {
         <input
           type="search"
           placeholder="Enter your Address to Start the services from GodCrew"
-          value={mobileNumber}
+          value={userAddress}
           onChange={handleInputChange}
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
         />
@@ -69,18 +69,18 @@ export default function Left() {
         {showDropdown && (
           <div className='bg-red-300 suggestion-warper'>
             <ul
-            className="absolute w-full border border-gray-300 rounded bg-white max-h-40 overflow-y-auto shadow-lg z-10 transition-all duration-300 ease-in-out"
-          >
-            {suggestions.map((suggestion) => (
-              <li
-                key={suggestion.place_id}
-                className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                onClick={() => handleSuggestionClick(suggestion.description)}
-              >
-                {suggestion.description}
-              </li>
-            ))}
-          </ul>
+              className="absolute w-full border border-gray-300 rounded bg-white max-h-40 overflow-y-auto shadow-lg z-10 transition-all duration-300 ease-in-out"
+            >
+              {suggestions.map((suggestion) => (
+                <li
+                  key={suggestion.place_id}
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => handleSuggestionClick(suggestion.description)}
+                >
+                  {suggestion.description}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         <button

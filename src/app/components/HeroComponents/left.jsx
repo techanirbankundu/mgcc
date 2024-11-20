@@ -44,7 +44,7 @@ export default function Left() {
 
   const handleGetStarted = () => {
     alert(`Address entered: ${userAddress}`);
-    location.replace(`https://app.godcrew.com/phoneLogin?location=${userAddress}`);
+    location.replace(`https://app.godcrew.com/phoneLogin/${userAddress}`);
   };
 
   return (
